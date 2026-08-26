@@ -14,6 +14,6 @@ const menusechema = new mongoose.Schema({
     },
 }
 );
-const menu = mongoose.model('menu',menusechema);
+const menu = mongoose.model('menu',menusechema);//FOR EXPORTING THE FILE IN SERVER FILE;
 module.exports = menu;
 
