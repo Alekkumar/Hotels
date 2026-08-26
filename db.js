@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
-
-const mongoURL = "mongodb://127.0.0.1:27017/";
+//const mongoURL = process.env.MONGO_URL_LOCAL; //LOCAL HOST..
+const mongoURL = process.env.MONGO_URL;
 mongoose.connect(mongoURL);//,{
-    //useNewUrlParser: true,
-    //useUnifiedTopology: true
+//useNewUrlParser: true,
+//useUnifiedTopology: true
 //})
 const db = mongoose.connection;
 
-db.on('connected',()=>{
+db.on('connected', () => {
     console.log("connected");
 })
 
-db.on('error',()=>{
+db.on('error', () => {
     console.log("error");
 })
-db.on('disconnected',()=>{
+db.on('disconnected', () => {
     console.log("disconnected");
 })
 module.exports = db;

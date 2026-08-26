@@ -1,6 +1,8 @@
-//import express from 'express'
+require('dotenv').config({ path: require('path').join(__dirname, 'routers', '.env') });
+
 const express = require("express");
 const app = express()
+const Port = process.env.PORT || 3000;
 //const db = require("/.connectig.js");
 const db = require("./db.js");
 const bodyparser = require('body-parser');
@@ -9,7 +11,7 @@ const person = require('./models/person.js');
 const menu = require("./models/menu.js");
 app.get('/', (req, res) => {
   res.send('BABA KA DHABHA');
-})
+});
 //app.post("/person",async(req,res)=>{
   // const data = req.body;
   // const newPerson = new person(data);
@@ -73,6 +75,7 @@ app.use("/menu",menurouter);
 //   }
   
 // })
-app.listen(3000, () => {
+
+app.listen(Port, () => {
   console.log('Server is running on http://localhost:3000')
 })
