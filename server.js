@@ -13,22 +13,22 @@ app.get('/', (req, res) => {
   res.send('BABA KA DHABHA');
 });
 //app.post("/person",async(req,res)=>{
-  // const data = req.body;
-  // const newPerson = new person(data);
-  // // newPerson.name = data.name;
-  // // newPerson.age = data.age;
-  // // newPerson.mobile = data.mobile;
-  // // newPerson.email = data.email;
-  // // newPerson.addresss = data.addresss;
-  // newPerson.save((error,person) => {
-  //   if(error){
-  //     console.log("Error :",error);
-  //     res.status(500).json({error:"Internal sever error"})
-  //   }else{
-  //     console.log("data saved");
-  //     res.status(200).json(savedperson);
-  //   }
-  // })
+// const data = req.body;
+// const newPerson = new person(data);
+// // newPerson.name = data.name;
+// // newPerson.age = data.age;
+// // newPerson.mobile = data.mobile;
+// // newPerson.email = data.email;
+// // newPerson.addresss = data.addresss;
+// newPerson.save((error,person) => {
+//   if(error){
+//     console.log("Error :",error);
+//     res.status(500).json({error:"Internal sever error"})
+//   }else{
+//     console.log("data saved");
+//     res.status(200).json(savedperson);
+//   }
+// })
 // try{
 //   const data = req.body
 //   const newPerson = new person(data);
@@ -58,10 +58,10 @@ app.get('/', (req, res) => {
 
 const personrouter = require('./routers/personrouter.js');
 //app.use('/person',personrouter);
-app.use("/person",personrouter);
+app.use("/person", personrouter);
 
 const menurouter = require('./routers/menurouters.js');
-app.use("/menu",menurouter);
+app.use("/menu", menurouter);
 
 
 // app.get('/data',async (req,res) => {
@@ -73,9 +73,14 @@ app.use("/menu",menurouter);
 //     console.log(err);
 //   res.status(500).json({error : "Internal server error"});
 //   }
-  
+
 // })
 
-app.listen(Port, () => {
-  console.log('Server is running on http://localhost:3000')
-})
+db.then(() => {
+  app.listen(Port, '0.0.0.0', () => {
+    console.log(`Server is running on port ${Port}`);
+  });
+}).catch((error) => {
+  console.error('Database connection failed:', error.message);
+  process.exit(1);
+});

@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
-const mongoURL = process.env.MONGO_URL_LOCAL; //LOCAL HOST..
-//const mongoURL = process.env.MONGO_URL;
-mongoose.connect(mongoURL);//,{
+//const mongoURL = process.env.MONGO_URL_LOCAL; //LOCAL HOST..
+const mongoURL = process.env.MONGO_URL;
+if (!mongoURL) {
+    throw new Error("MONGO_URL is not configured");
+}
+
+const connectionPromise = mongoose.connect(mongoURL);//,{
 //useNewUrlParser: true,
 //useUnifiedTopology: true
 //})
@@ -17,4 +21,4 @@ db.on('error', () => {
 db.on('disconnected', () => {
     console.log("disconnected");
 })
-module.exports = db;
+module.exports = connectionPromise;
