@@ -1,14 +1,8 @@
 const mongoose = require("mongoose");
-//const mongoURL = process.env.MONGO_URL_LOCAL; //LOCAL HOST..
-const mongoURL = process.env.MONGO_URL;
-if (!mongoURL) {
-    throw new Error("MONGO_URL is not configured");
-}
 
-const connectionPromise = mongoose.connect(mongoURL);//,{
-//useNewUrlParser: true,
-//useUnifiedTopology: true
-//})
+const mongoURL = process.env.MONGO_URL || process.env.MONGO_URL_LOCAL || "mongodb://127.0.0.1:27017/";
+
+const connectionPromise = mongoose.connect(mongoURL);
 const db = mongoose.connection;
 
 db.on('connected', () => {
