@@ -2,7 +2,8 @@ require('dotenv').config({ path: require('path').join(__dirname, 'routers', '.en
 
 const express = require("express");
 const app = express()
-const Port = process.env.PORT || 3000;
+//const Port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 //const db = require("/.connectig.js");
 const db = require("./db.js");
 const bodyparser = require('body-parser');
@@ -76,9 +77,11 @@ app.use("/menu", menurouter);
 
 // })
 
+app.listen(PORT, '0.0.0.0', () => console.log(`Listening on port ${PORT}`));
+
 db.then(() => {
-  app.listen(Port, '0.0.0.0', () => {
-    console.log(`Server is running on port ${Port}`);
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
   });
 }).catch((error) => {
   console.error('Database connection failed:', error.message);
