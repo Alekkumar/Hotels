@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-//const mongoURL = process.env.MONGO_URL_LOCAL; //LOCAL HOST..
-const mongoURL = process.env.MONGO_URL;
+const mongoURL = process.env.MONGO_URL_LOCAL; //LOCAL HOST..
+//const mongoURL = process.env.MONGO_URL;
 mongoose.connect(mongoURL);//,{
 //useNewUrlParser: true,
 //useUnifiedTopology: true

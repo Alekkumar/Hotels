@@ -67,4 +67,4 @@ menurouter.delete("/:id",async (req,res) =>{//FOR DELETING DATA..
         res.status(500).json({Error: "Internal Server error."});
     }
 });
-module.exports = menurouter
+module.exports = menurouter;
