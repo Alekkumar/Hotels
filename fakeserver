@@ -5,14 +5,39 @@
 // //const Port = process.env.PORT || 3000;
 // const PORT = process.env.PORT || 3000;
 // //const db = require("/.connectig.js");
+// const passport = require("passport");
+// const LocalStrategy = require("passport-local").Strategy;
 // const db = require("./db.js");
 // const bodyparser = require('body-parser');
 // app.use(bodyparser.json());
 // const person = require('./models/person.js');
 // const menu = require("./models/menu.js");
-// app.get('/', (req, res) => {
-//   res.send('BABA KA DHABHA');
-// });
+// passport.use(
+//   new LocalStrategy(async (username, password, done) => {
+//       try {
+//         console.log('Receved credentials');
+//         const user = await Person.findOne({ username });
+
+//         if (!user) {
+//           return done(null, false, { message: "Incorrect username." });
+//         }
+
+//         if (user.password !== password) {
+//           return done(null, false, { message: "Incorrect password." });
+//         }else{
+//               return done(null, user);
+//         }
+//       } catch (error) {
+//         return done(error);
+//       }
+//     }
+//   )
+// );
+
+// app.use(passport.initialize());
+//app.get("/",passport.authenticate('local', {session: false}),(req, res) => {
+//  res.send("BABA KA DHABA API is running successfully!");
+//});
 // //app.post("/person",async(req,res)=>{
 // // const data = req.body;
 // // const newPerson = new person(data);
