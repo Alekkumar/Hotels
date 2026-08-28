@@ -26,12 +26,12 @@ app.use(passport.initialize());
 
 // Root Route
 const auth = passport.authenticate('local',{session: false});
-app.get("/" , auth ,(req,  res) => {
+app.get("/",(req,  res) => {
   res.send("BABA KA DHABA API is running successfully!");
 });
 
 // Mounted Routes......
-app.use("/person", personRouter);
+app.use("/person", auth , personRouter);
 app.use("/menu", menuRouter);
 
 // Start Server after Database Connection
