@@ -31,10 +31,10 @@ app.get("/",(req,  res) => {
 });
 
 // Mounted Routes......
-app.use("/person", auth , personRouter);
+app.use("/person", auth, personRouter);
 app.use("/menu", menuRouter);
 
-// Start Server after Database Connection
+// Start Server after Database Connection 
 db.then(() => {
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server is running on port ${PORT}`);
